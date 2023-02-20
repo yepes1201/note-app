@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ES6",
+    "paths": {
+      "@/assets": ["./src/assets/*"],
+      "@/components": ["./src/components/*"],
+      "@/firebase": ["./src/firebase/*"],
+      "@/hooks": ["./src/hooks/*"],
+      "@/layout": ["./src/layout/*"],
+      "@/routes": ["./src/routes/*"],
+      "@/store": ["./src/store/*"],
+      "@/styles": ["./src/styles/*"],
+      "@/utils": ["./src/utils/*"]
+    }
+  }
+}
