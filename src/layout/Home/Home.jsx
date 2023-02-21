@@ -1,14 +1,12 @@
-import { signOut, getAuth } from "firebase/auth";
-import { Button } from "@/components";
+import { Navbar } from "@/components";
 
 export const Home = () => {
-  const handleLogout = async () => {
-    await signOut(getAuth());
-  };
-
   return (
-    <div>
-      <Button onClick={handleLogout}>Sign Out</Button>
+    <div className="flex flex-col h-full">
+      <Navbar />
+      <div className="bg-neutral-700 h-full">
+        <div className="container m-auto mt-4">Hola</div>
+      </div>
     </div>
   );
 };
