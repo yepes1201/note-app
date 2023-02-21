@@ -5,11 +5,13 @@ import { AuthForm, RegisterForm } from "@/components";
 import { useLogin } from "@/hooks";
 
 import "@/firebase";
+import { Loading } from "@/components";
 
 export const AppRouter = () => {
   const { checking } = useLogin();
 
-  if (checking) return <h1>Checking...</h1>;
+  if (checking) return <Loading />;
+  // if (checking) return <h1>Checking...</h1>;
 
   return (
     <BrowserRouter>
