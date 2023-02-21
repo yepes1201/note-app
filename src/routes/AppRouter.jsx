@@ -1,11 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { PrivateRoute, PublicRoute } from "@/routes";
 import { Auth, Home } from "@/layout";
-import { AuthForm, RegisterForm } from "@/components";
+import { AuthForm, RegisterForm, Loading } from "@/components";
 import { useLogin } from "@/hooks";
 
 import "@/firebase";
-import { Loading } from "@/components";
 
 export const AppRouter = () => {
   const { checking } = useLogin();
