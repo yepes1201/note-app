@@ -4,13 +4,12 @@ import { useAuth } from "@/store";
 
 export const Navbar = () => {
   const { user } = useAuth();
-  console.log(user.photoURL);
 
   const handleLogout = async () => {
     await signOut(getAuth());
   };
   return (
-    <nav className="bg-neutral-900">
+    <nav className="bg-neutral-900 px-2">
       <div className="container m-auto flex justify-between items-center py-4">
         <h3>ToDo App</h3>
         <div className="flex items-center gap-1">
