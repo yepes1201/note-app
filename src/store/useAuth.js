@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { useNotes } from "./useNotes";
 
 export const useAuth = create((set) => {
   return {
@@ -10,6 +11,7 @@ export const useAuth = create((set) => {
     },
     logout: () => {
       return set(() => {
+        useNotes.getState().unsetNotes();
         return { user: null };
       });
     },

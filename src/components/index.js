@@ -6,6 +6,7 @@ import { RegisterForm } from "./RegisterForm/RegisterForm.jsx";
 import { Loading } from "./Loading/Loading.jsx";
 import { Navbar } from "./Navbar/Navbar.jsx";
 import { NoteForm } from "./NoteForm/NoteForm.jsx";
+import { Note } from "./Note/Note.jsx";
 
 export {
   Input,
@@ -16,4 +17,5 @@ export {
   Navbar,
   Textarea,
   NoteForm,
+  Note,
 };
