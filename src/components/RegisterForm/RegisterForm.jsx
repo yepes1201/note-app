@@ -8,6 +8,11 @@ export const RegisterForm = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const password2Ref = useRef();
+
+  const handleRegister = () => {
+    // TODO: register validation
+  };
+
   return (
     <>
       <AuthTitle>Create Account</AuthTitle>
@@ -41,7 +46,7 @@ export const RegisterForm = () => {
         placeholder="Confirm Password"
       />
       <Button
-        onClick={null}
+        onClick={handleRegister}
         className="w-full mb-2  bg-yellow-500 text-black hover:bg-yellow-400"
       >
         <i className="fa-solid fa-right-to-bracket"></i> Sign Up

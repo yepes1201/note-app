@@ -1,4 +1,4 @@
-import { Note } from "@/components";
+import { Note, NoteSkeletonList } from "@/components";
 import { useLoadNotes } from "@/hooks";
 import { useNotes } from "@/store";
 
@@ -6,7 +6,7 @@ export const NoteList = () => {
   const { notes } = useNotes();
   const { loading, error } = useLoadNotes();
 
-  if (loading) return <h1>Cargando</h1>;
+  if (loading) return <NoteSkeletonList />;
   if (error) return <h1>{JSON.stringify(error)}</h1>;
 
   return (
