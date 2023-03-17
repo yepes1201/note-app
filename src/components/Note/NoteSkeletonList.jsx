@@ -4,8 +4,8 @@ export const NoteSkeletonList = () => {
   const skeletons = Array(9).fill(null);
   return (
     <>
-      {skeletons.map(() => {
-        return <NoteSkeleton />;
+      {skeletons.map((item, i) => {
+        return <NoteSkeleton key={i} />;
       })}
     </>
   );

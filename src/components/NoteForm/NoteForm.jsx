@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 import { Textarea, Input, Button } from "@/components";
 import { useAuth, useNotes } from "@/store";
@@ -8,9 +8,10 @@ export const NoteForm = () => {
   const { addNote } = useNotes();
   const titleRef = useRef();
   const descriptionRef = useRef();
+  const [creating, setCreating] = useState(false);
 
   const handleSaveNote = async () => {
-    // TODO: save note to database
+    setCreating(true);
     const noteRef = collection(getFirestore(), `${user.uid}/user/todos`);
     const note = {
       title: titleRef.current.value,
@@ -21,6 +22,7 @@ export const NoteForm = () => {
     addNote({ id: doc.id, ...note });
     titleRef.current.value = "";
     descriptionRef.current.value = "";
+    setCreating(false);
   };
 
   return (
@@ -34,8 +36,9 @@ export const NoteForm = () => {
           placeholder="Take a note..."
         />
         <Button
+          disabled={creating}
           onClick={handleSaveNote}
-          className="absolute right-2 -bottom-4 bg-yellow-500 rounded-full w-9 h-9 flex items-center justify-center hover:bg-yellow-400"
+          className="absolute right-2 -bottom-4 bg-yellow-500 rounded-full w-9 h-9 flex items-center justify-center hover:bg-yellow-400 disabled:bg-gray-400"
         >
           <i className="fa-solid fa-plus"></i>
         </Button>

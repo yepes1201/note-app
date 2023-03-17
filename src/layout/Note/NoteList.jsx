@@ -13,7 +13,9 @@ export const NoteList = () => {
     <>
       {notes.length === 0 && <p>Create a note up there</p>}
       {notes.map(({ id, title, description }, i) => {
-        return <Note key={id} title={title} description={description} />;
+        return (
+          <Note key={id} id={id} title={title} description={description} />
+        );
       })}
     </>
   );
