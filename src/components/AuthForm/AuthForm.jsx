@@ -17,6 +17,8 @@ export const AuthForm = () => {
     setLoading(false);
   };
 
+  // TODO: handle login
+
   return (
     <>
       <AuthTitle>Log In</AuthTitle>
