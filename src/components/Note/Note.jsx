@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { doc, deleteDoc, getFirestore, updateDoc } from "firebase/firestore";
+import { toast } from "react-toastify";
 import { Button, NoteLayout } from "@/components";
 import { useAuth, useNotes } from "@/store";
 
@@ -17,13 +18,12 @@ export const Note = ({ id, title, description }) => {
       await deleteDoc(doc(getFirestore(), `${user.uid}/user/todos/${id}`));
       deleteNote(id);
     } catch (err) {
-      console.log(err);
+      toast.error("Oops.\nSomething went wrong when deleting the note");
     } finally {
       setFetching(false);
     }
   };
 
-  // TODO: edit note
   const handleEditNote = async () => {
     try {
       setFetching(true);
@@ -33,7 +33,7 @@ export const Note = ({ id, title, description }) => {
       });
       setEditing(false);
     } catch (error) {
-      console.log(error);
+      toast.error("Oops.\nSomething went wrong when updating the note");
     } finally {
       setFetching(false);
     }

@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { collection, addDoc, getFirestore } from "firebase/firestore";
+import { toast } from "react-toastify";
 import { Textarea, Input, Button } from "@/components";
 import { useAuth, useNotes } from "@/store";
 
@@ -11,18 +12,23 @@ export const NoteForm = () => {
   const [creating, setCreating] = useState(false);
 
   const handleSaveNote = async () => {
-    setCreating(true);
-    const noteRef = collection(getFirestore(), `${user.uid}/user/todos`);
-    const note = {
-      title: titleRef.current.value,
-      description: descriptionRef.current.value,
-      timecreation: new Date().getTime(),
-    };
-    const doc = await addDoc(noteRef, note);
-    addNote({ id: doc.id, ...note });
-    titleRef.current.value = "";
-    descriptionRef.current.value = "";
-    setCreating(false);
+    try {
+      setCreating(true);
+      const noteRef = collection(getFirestore(), `${user.uid}/user/todos`);
+      const note = {
+        title: titleRef.current.value,
+        description: descriptionRef.current.value,
+        timecreation: new Date().getTime(),
+      };
+      const doc = await addDoc(noteRef, note);
+      addNote({ id: doc.id, ...note });
+      titleRef.current.value = "";
+      descriptionRef.current.value = "";
+    } catch (error) {
+      toast.error("Oops.\nSomething went wrong when creating the note");
+    } finally {
+      setCreating(false);
+    }
   };
 
   return (

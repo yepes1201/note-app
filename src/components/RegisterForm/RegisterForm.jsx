@@ -60,7 +60,7 @@ export const RegisterForm = () => {
         login({ ...user, displayName: nameRef.current.value });
       }
     } catch (error) {
-      console.log(error);
+      toast.error("Oops.\nSomething went wrong when creating the user");
     } finally {
       setFetching(false);
     }
